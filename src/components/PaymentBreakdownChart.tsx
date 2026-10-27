@@ -61,7 +61,7 @@ export const PaymentBreakdownChart: React.FC<PaymentBreakdownChartProps> = ({
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white/5 to-transparent pointer-events-none" />
           <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-[#E11D48]/10 rounded-full blur-2xl pointer-events-none" />
 
-          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="relative z-10 flex flex-col gap-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#FACC15] flex items-center gap-1.5">
@@ -72,7 +72,7 @@ export const PaymentBreakdownChart: React.FC<PaymentBreakdownChartProps> = ({
                   Per Bulan
                 </span>
               </div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight tabular-nums mt-1.5">
+              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tracking-tight tabular-nums mt-1.5 break-words">
                 {formatIDR(result.monthlyInstallment)}
               </div>
               <p className="text-xs text-slate-300/80 mt-1">
@@ -81,17 +81,17 @@ export const PaymentBreakdownChart: React.FC<PaymentBreakdownChartProps> = ({
               </p>
             </div>
 
-            {/* Quick summary strip */}
-            <div className="flex items-center gap-3 sm:gap-6 pt-2 md:pt-0 border-t md:border-t-0 md:border-l border-blue-400/20 md:pl-6">
-              <div>
-                <span className="text-[11px] text-slate-400 block">Total Pengembalian</span>
-                <span className="text-lg font-bold text-white font-mono tabular-nums">
+            {/* Quick summary strip with dedicated cards that never cut off */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-blue-400/20">
+              <div className="p-3 rounded-lg bg-[#070D1E]/70 border border-blue-500/30">
+                <span className="text-[11px] text-slate-400 font-medium block">Total Pengembalian</span>
+                <span className="text-base sm:text-lg font-bold text-white font-mono tabular-nums break-words block mt-0.5">
                   {formatIDR(result.totalPayment)}
                 </span>
               </div>
-              <div>
-                <span className="text-[11px] text-slate-400 block">Total Bunga</span>
-                <span className="text-lg font-bold text-[#E11D48] font-mono tabular-nums">
+              <div className="p-3 rounded-lg bg-[#070D1E]/70 border border-red-500/30">
+                <span className="text-[11px] text-slate-400 font-medium block">Total Beban Bunga</span>
+                <span className="text-base sm:text-lg font-bold text-[#F43F5E] font-mono tabular-nums break-words block mt-0.5">
                   {formatIDR(result.totalInterest)}
                 </span>
               </div>
@@ -100,9 +100,9 @@ export const PaymentBreakdownChart: React.FC<PaymentBreakdownChartProps> = ({
         </div>
 
         {/* Donut Chart & Detailed Breakdown Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          {/* Donut SVG (Left Column) */}
-          <div className="md:col-span-5 flex flex-col items-center justify-center p-4 bg-[#081021] rounded-xl border border-slate-700/60 relative">
+        <div className="flex flex-col gap-5">
+          {/* Donut SVG */}
+          <div className="w-full flex flex-col items-center justify-center p-5 bg-[#081021] rounded-xl border border-slate-700/60 relative">
             <div className="relative w-48 h-48 sm:w-56 sm:h-56">
               <svg className="w-full h-full -rotate-90 transform" viewBox="0 0 180 180">
                 {/* Background Track (Silver-dark) */}
@@ -218,8 +218,8 @@ export const PaymentBreakdownChart: React.FC<PaymentBreakdownChartProps> = ({
             </div>
           </div>
 
-          {/* Metric Details Grid (Right Column) */}
-          <div className="md:col-span-7 space-y-3">
+          {/* Metric Details List */}
+          <div className="w-full space-y-3">
             {/* 1. Pokok Card */}
             <div
               className={`p-3.5 rounded-xl border transition-all ${
@@ -239,8 +239,8 @@ export const PaymentBreakdownChart: React.FC<PaymentBreakdownChartProps> = ({
                   {principalShare.toFixed(1)}%
                 </span>
               </div>
-              <div className="mt-1 flex items-baseline justify-between">
-                <span className="text-xl font-bold font-mono text-white tabular-nums">
+              <div className="mt-1 flex flex-wrap items-baseline justify-between gap-1.5">
+                <span className="text-lg sm:text-xl font-bold font-mono text-white tabular-nums break-words">
                   {formatIDR(result.totalPrincipal)}
                 </span>
                 <span className="text-xs text-slate-400">Dana bersih yang diterima</span>
@@ -266,8 +266,8 @@ export const PaymentBreakdownChart: React.FC<PaymentBreakdownChartProps> = ({
                   {interestShare.toFixed(1)}%
                 </span>
               </div>
-              <div className="mt-1 flex items-baseline justify-between">
-                <span className="text-xl font-bold font-mono text-[#F43F5E] tabular-nums">
+              <div className="mt-1 flex flex-wrap items-baseline justify-between gap-1.5">
+                <span className="text-lg sm:text-xl font-bold font-mono text-[#F43F5E] tabular-nums break-words">
                   {formatIDR(result.totalInterest)}
                 </span>
                 <span className="text-xs text-slate-400">

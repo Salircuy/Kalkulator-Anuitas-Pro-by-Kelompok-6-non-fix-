@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calculator, Printer } from 'lucide-react';
+import { Calculator, Printer, FileCode } from 'lucide-react';
 
 interface NavbarProps {
   onReset: () => void;
@@ -56,7 +56,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onReset, onPrint }) => {
         </nav>
 
         {/* Zone 3: 1 primary action */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0">
+          <a
+            href="/kalkulator-anuitas-pro.html"
+            download="kalkulator-anuitas-pro.html"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-200 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/60 rounded-md transition-colors whitespace-nowrap shrink-0 shadow-sm"
+            title="Unduh berkas offline tunggal .HTML"
+          >
+            <FileCode className="w-3.5 h-3.5 text-[#FACC15]" />
+            Ekspor .HTML
+          </a>
           <button
             onClick={onPrint}
             type="button"

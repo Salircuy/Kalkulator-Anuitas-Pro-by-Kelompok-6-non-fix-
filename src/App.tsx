@@ -133,9 +133,9 @@ export default function App() {
         <LoanInputSection input={loanInput} onChange={setLoanInput} />
 
         {/* Section 2: Visualizations Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
           {/* Left Column: Donut & Payment Composition */}
-          <div className="lg:col-span-5 w-full">
+          <div className="xl:col-span-5 w-full">
             <PaymentBreakdownChart
               result={calculationResult}
               calculationMethod={loanInput.calculationMethod || 'annuity'}
@@ -143,7 +143,7 @@ export default function App() {
           </div>
 
           {/* Right Column: Amortization Curve & Stacked Composition Trajectory */}
-          <div className="lg:col-span-7 w-full">
+          <div className="xl:col-span-7 w-full">
             <AmortizationChart
               schedule={calculationResult.schedule}
               totalPrincipal={calculationResult.totalPrincipal}
