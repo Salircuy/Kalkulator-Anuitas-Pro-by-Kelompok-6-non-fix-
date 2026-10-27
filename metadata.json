@@ -1,0 +1,6 @@
+{
+  "name": "Kalkulator Anuitas Pro",
+  "description": "Kalkulator anuitas pinjaman interaktif dengan grafik visualisasi total pembayaran dan tabel angsuran bulanan lengkap.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
