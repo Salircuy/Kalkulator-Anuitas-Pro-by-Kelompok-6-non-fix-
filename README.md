@@ -106,7 +106,38 @@ Buka peramban (*browser*) Anda di `http://localhost:3000`.
 ```bash
 npm run build
 ```
-File hasil kompilasi akan berada di folder `dist/` dan siap dideploy ke Vercel, Netlify, Cloud Run, atau GitHub Pages.
+File hasil kompilasi akan berada di folder `dist/` dan siap dideploy langsung ke Vercel, Netlify, atau Cloud Run.
+
+---
+
+## Panduan Deploy ke Vercel
+
+Aplikasi ini sudah dilengkapi file konfigurasi `vercel.json` dan siap dideploy dengan 2 cara:
+
+### Cara 1: Deploy Otomatis via GitHub (Sangat Disarankan)
+1. Buka [vercel.com](https://vercel.com) dan login dengan akun GitHub Anda.
+2. Klik tombol **"Add New..."** lalu pilih **"Project"**.
+3. Cari dan pilih repository `kalkulator-anuitas-pro` dari daftar GitHub Anda, lalu klik **"Import"**.
+4. Di bagian konfigurasi:
+   - **Framework Preset**: Terdeteksi otomatis sebagai **Vite**.
+   - **Root Directory**: `./` (biarkan default).
+   - **Build Command**: `npm run build` (default).
+   - **Output Directory**: `dist` (default).
+5. Klik **"Deploy"**.
+6. Dalam waktu kurang dari 1 menit, website Anda sudah online dan mendapatkan domain gratis (misal: `https://kalkulator-anuitas-pro.vercel.app`).
+
+### Cara 2: Deploy Cepat via Vercel CLI (Terminal)
+Jika Anda menggunakan terminal komputer:
+```bash
+# 1. Pasang Vercel CLI (jika belum ada)
+npm i -g vercel
+
+# 2. Jalankan perintah deploy
+vercel
+
+# 3. Untuk deploy ke domain produksi final
+vercel --prod
+```
 
 ---
 
