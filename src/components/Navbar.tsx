@@ -1,12 +1,12 @@
 import React from 'react';
-import { Calculator, Printer, FileCode } from 'lucide-react';
+import { Calculator, RotateCcw } from 'lucide-react';
 
 interface NavbarProps {
   onReset: () => void;
-  onPrint: () => void;
+  onPrint?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onReset, onPrint }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onReset }) => {
   return (
     <header className="sticky top-0 z-40 bg-[#070D1E]/95 backdrop-blur-md border-b border-slate-700/60 transition-all">
       {/* Decorative top racing strip with Ford Blue, Red Bull Yellow & Red accents */}
@@ -56,29 +56,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onReset, onPrint }) => {
         </nav>
 
         {/* Zone 3: 1 primary action */}
-        <div className="flex items-center gap-2.5 shrink-0">
-          <a
-            href="/kalkulator-anuitas-pro.html"
-            download="kalkulator-anuitas-pro.html"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-200 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/60 rounded-md transition-colors whitespace-nowrap shrink-0 shadow-sm"
-            title="Unduh berkas offline tunggal .HTML"
-          >
-            <FileCode className="w-3.5 h-3.5 text-[#FACC15]" />
-            Ekspor .HTML
-          </a>
-          <button
-            onClick={onPrint}
-            type="button"
-            className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-slate-200 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/60 rounded-md transition-colors whitespace-nowrap shrink-0 shadow-sm"
-          >
-            <Printer className="w-3.5 h-3.5 text-slate-300" />
-            Cetak PDF
-          </button>
+        <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={onReset}
             type="button"
-            className="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#003B7A] via-[#0055B8] to-[#0066CC] hover:from-[#004A99] hover:to-[#0077EE] border border-blue-400/40 rounded-md transition-all shadow-md shadow-blue-950/80 whitespace-nowrap shrink-0 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#003B7A] via-[#0055B8] to-[#0066CC] hover:from-[#004A99] hover:to-[#0077EE] border border-blue-400/40 rounded-md transition-all shadow-md shadow-blue-950/80 whitespace-nowrap shrink-0 active:scale-95 cursor-pointer"
           >
+            <RotateCcw className="w-3.5 h-3.5" />
             Hitung Ulang
           </button>
         </div>
